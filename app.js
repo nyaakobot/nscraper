@@ -39,8 +39,8 @@ app.post('/api/results', async (req, res) => {
                     const result={title: title,	dlink: dl,mlink: ml,size: size,dateAdded: dateAdded,seeders: seeds,leechers: leechers};
                     fetched.results.push(result);
             });
-            console.log(data.results.length+" results fetched");
-            res.json({ status: 'ok', data: fetched });
+            console.log(fetched.results.length+" results fetched");
+            res.json({ status: 'ok', data: fetched.results });
             console.log("response sent")
         }catch (e) {
             console.error(e);
