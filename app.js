@@ -11,6 +11,7 @@ app.use('/', express.static(path.join(__dirname)));
 app.use(bodyParser.json());
 app.post('/api/results', async (req, res) => {
     try{
+        console.log(req.body)
         const { url } = req.body
         const { pageData } = await axios.get(url);
         const $ = cheerio.load(pageData);
