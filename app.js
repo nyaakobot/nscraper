@@ -66,8 +66,7 @@ app.post('/api/torrentData',async (req,res)=>{
         const text = convert(html);
         html=$('#comments');
         html.each(function(idx, el){
-            const row= $(el).children('[id^=com]').html();
-            console.log(idx);
+            const row= $(el).children('div[id^=com]').html();
             console.log(row)
         });
         console.log(html);
