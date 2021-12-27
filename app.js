@@ -13,10 +13,10 @@ app.post('/api/results', async (req, res) => {
     try{
         console.log(req.body)
         const { url } = req.body
-        const { pageData } = await axios.get(url);
-        const $ = cheerio.load(pageData);
+        const { data } = await axios.get(url);
+        const $ = cheerio.load(data);
         const tabl = $(".table-responsive table tbody tr");
-        const data={results: []};
+        const fetched={results: []};
             tabl.each(function(idx, el){
                     const row= $(el).children("td");
                     const arr=[];
@@ -37,7 +37,7 @@ app.post('/api/results', async (req, res) => {
                     const seeds=arr[5];
                     const leechers=arr[6];
                     const result={title: title,	dlink: dl,mlink: ml,size: size,dateAdded: dateAdded,seeders: seeds,leechers: leechers};
-                    data.results.push(result);
+                    fetched.results.push(result);
             });
             console.log(data.results.length+" results fetched");
             res.json({ status: 'ok', data: data });
