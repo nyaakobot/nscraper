@@ -59,12 +59,12 @@ app.post('/api/torrentData',async (req,res)=>{
         const {id}=req.body;
         //
         //const url="https://nyaa.si/view/"+id;
-        const url="https://nyaa.si/view/1471684"
+        const url="https://nyaa.si/view/1471545"
         const { data } = await axios.get(url);
 	    const $ = cheerio.load(data);
         var html = $('#torrent-description').html();
         const text = convert(html);
-        html=$('#comments panel panel-default comment-panel').html();
+        html=$('#comments .panel-body').html();
         console.log(html);
         res.json({status:'ok', description: text})
         console.log("response sent")
