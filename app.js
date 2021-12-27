@@ -64,7 +64,7 @@ app.post('/api/torrentData',async (req,res)=>{
 	    const $ = cheerio.load(data);
         var html = $('#torrent-description').html();
         const text = convert(html);
-        html=$('#comments').html();
+        html=$('#comments');
         html.each(function(idx, el){
             const row= $(el).children('[id^=com]').html();
             console.log(idx);
