@@ -12,7 +12,12 @@ app.use(bodyParser.json());
 app.post('/api/results', async (req, res) => {
     try{
         console.log(req.body)
-        const { url } = req.body
+        const { query,sortBy,order } = req.body
+        var url=null;
+        if(sortBy)
+        url="https://nyaa.si/?f=0&c=0_0&q="+query+"&s="+sortBy+"&o="+order;
+        else
+        url="https://nyaa.si/?f=0&c=0_0&q="+query
         const { data } = await axios.get(url);
 	    const $ = cheerio.load(data);
         const tabl = $(".table-responsive table tbody tr");
@@ -57,6 +62,7 @@ app.post('/api/torrentData',async (req,res)=>{
         const html = $('#torrent-description').html();
         const text = convert(html);
         res.json({status:'ok', description: text})
+        console.log("response sent")
         }
         catch (e) {
             console.error(e);
