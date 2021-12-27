@@ -14,7 +14,8 @@ app.post('/api/results', async (req, res) => {
         console.log(req.body)
         const { url } = req.body
         const { data } = await axios.get(url);
-        const $ = cheerio.load(data);
+        console.log(data);
+	    const $ = cheerio.load(data);
         const tabl = $(".table-responsive table tbody tr");
         const fetched={results: []};
             tabl.each(function(idx, el){
