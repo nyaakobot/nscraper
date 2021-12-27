@@ -14,10 +14,11 @@ app.post('/api/results', async (req, res) => {
         console.log(req.body)
         const { query,sortBy,order } = req.body
         var url=null;
+        const nquery=query.replace(/\s+/g,'+');
         if(sortBy)
-        url="https://nyaa.si/?f=0&c=0_0&q="+query+"&s="+sortBy+"&o="+order;
+        url="https://nyaa.si/?f=0&c=0_0&q="+nquery+"&s="+sortBy+"&o="+order;
         else
-        url="https://nyaa.si/?f=0&c=0_0&q="+query
+        url="https://nyaa.si/?f=0&c=0_0&q="+nquery
         const { data } = await axios.get(url);
 	    const $ = cheerio.load(data);
         const tabl = $(".table-responsive table tbody tr");
