@@ -14,7 +14,6 @@ app.post('/api/results', async (req, res) => {
         console.log(req.body)
         const { url } = req.body
         const { data } = await axios.get(url);
-        console.log(data);
 	    const $ = cheerio.load(data);
         const tabl = $(".table-responsive table tbody tr");
         const fetched={results: []};
@@ -41,7 +40,7 @@ app.post('/api/results', async (req, res) => {
                     fetched.results.push(result);
             });
             console.log(data.results.length+" results fetched");
-            res.json({ status: 'ok', data: data });
+            res.json({ status: 'ok', data: fetched });
             console.log("response sent")
         }catch (e) {
             console.error(e);
