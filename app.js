@@ -57,11 +57,14 @@ app.post('/api/results', async (req, res) => {
 app.post('/api/torrentData',async (req,res)=>{
     try{
         const {id}=req.body;
-        const url="https://nyaa.si/view/"+id;
+        //const url="https://nyaa.si/view/"+id;
+        const url="https://nyaa.si/view/1471684"
         const { data } = await axios.get(url);
 	    const $ = cheerio.load(data);
-        const html = $('#torrent-description').html();
+        var html = $('#torrent-description').html();
         const text = convert(html);
+        html=$('#comments').html();
+        console.log(html);
         res.json({status:'ok', description: text})
         console.log("response sent")
         }
