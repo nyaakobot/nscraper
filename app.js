@@ -50,8 +50,8 @@ app.post('/api/results', async (req, res) => {
 app.post('/api/torrentData',async (req,res)=>{
     try{
         const {url}=req.body;
-        const { pageData } = await axios.get(url);
-        const $ = cheerio.load(pageData);
+        const { data } = await axios.get(url);
+	    const $ = cheerio.load(data);
         const html = $('#torrent-description').html();
         const text = convert(html);
         res.json({status:'ok', description: text})
