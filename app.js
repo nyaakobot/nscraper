@@ -36,7 +36,8 @@ app.post('/api/results', async (req, res) => {
                     const dateAdded=arr[4];
                     const seeds=arr[5];
                     const leechers=arr[6];
-                    const result={title: title,	dlink: dl,mlink: ml,size: size,dateAdded: dateAdded,seeders: seeds,leechers: leechers};
+                    const id=dl.substring(dl.indexOf("download")+9,dl.indexOf(".torrent"))
+                    const result={id:id,title: title,	dlink: dl,mlink: ml,size: size,dateAdded: dateAdded,seeders: seeds,leechers: leechers};
                     fetched.results.push(result);
             });
             console.log(fetched.results.length+" results fetched");
@@ -49,7 +50,8 @@ app.post('/api/results', async (req, res) => {
 });
 app.post('/api/torrentData',async (req,res)=>{
     try{
-        const {url}=req.body;
+        const {id}=req.body;
+        const url="https://nyaa.si/view/"+id;
         const { data } = await axios.get(url);
 	    const $ = cheerio.load(data);
         const html = $('#torrent-description').html();
