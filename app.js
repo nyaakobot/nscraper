@@ -84,7 +84,7 @@ const url="https://nyaa.si/view/1468972"
         const text = convert(html);
         var txt = $('#collapse-comments').contents().map(function() {
                 if($(this).html()){
-                const user=$(this).find('div[title="User]').text()
+                const user=$(this).find('a[title="User]').text()
                 const comment=$(this).find('div[class="comment-content"]').text();
                 return {user,comment};
                 }
