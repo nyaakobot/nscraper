@@ -60,7 +60,7 @@ app.post('/api/torrentData',async (req,res)=>{
         const url="https://nyaa.si/view/"+id;
         const { data } = await axios.get(url);
 	    const $ = cheerio.load(data);
-        var html = $('#torrent-description').html();
+        var html =$('#torrent-description').html();
         const text = convert(html);
         var txt = $('#collapse-comments').contents().map(function() {
             if($(this).html()){
