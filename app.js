@@ -83,10 +83,12 @@ const url="https://nyaa.si/view/1468972"
         var html = $('#torrent-description').html();
         const text = convert(html);
         var txt = $('#collapse-comments').contents().map(function() {
+                if($(this).html()){
                 const scrap= $(this).html().replace(/(\r\n|\n|\r)/gm, "").replace(/(\r\t|\t|\r)/gm, "");
                 const user=scrap.substring(scrap.indexOf('"User">')+8,scrap.indexOf('<',scrap.indexOf('"User">')));
                 const comment=scrap.substring(scrap.indexOf('<',scrap.indexOf('class="comment-content')+1,scrap.indexOf('</div>')-1));
                 return {user,comment};
+                }
         }).get()
         
         console.log(txt)       
