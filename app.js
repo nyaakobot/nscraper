@@ -84,7 +84,6 @@ const url="https://nyaa.si/view/1471545"
         const text = convert(html);
         const list = $('div[id="comments"]')
         .find('div[id^="com"]').html()
-        .toArray()
         console.log(list);
 }
 test();
