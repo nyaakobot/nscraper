@@ -66,7 +66,7 @@ app.post('/api/torrentData',async (req,res)=>{
         const text = convert(html);
         const { tdata } = await axios.get(urlt);
 	    $ = cheerio.load(tdata);
-        html=$('#comments div[class=panel panel-default comment-panel]');
+        html=$('#comments');
         console.log(html);
         res.json({status:'ok', description: text})
         console.log("response sent")
