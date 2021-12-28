@@ -56,15 +56,20 @@ app.post('/api/results', async (req, res) => {
 });
 app.post('/api/torrentData',async (req,res)=>{
     try{
-        const {id}=req.body;
-        
+        const {id}=req.body;        
         const url="https://nyaa.si/view/"+id;
         const { data } = await axios.get(url);
 	    const $ = cheerio.load(data);
         var html = $('#torrent-description').html();
         const text = convert(html);
-       
-        res.json({status:'ok', description: text})
+        var txt = $('#collapse-comments').contents().map(function() {
+            if($(this).html()){
+            const user=scrap.substring(scrap.indexOf('"User">')+7,scrap.indexOf('<',scrap.indexOf('"User">')));
+            const comment=$(this).find('div[class="comment-content"]').text();
+            return {user,comment};
+            }
+        }).get()
+        res.json({status:'ok', description: text, comments: txt})
         console.log("response sent")
         }
         catch (e) {
@@ -75,21 +80,3 @@ app.post('/api/torrentData',async (req,res)=>{
 app.listen(process.env.PORT || PORT, () => {
 	console.log("listening "+PORT+"...");
 });
-async function test(){
-
-const url="https://nyaa.si/view/1468972"
-        const { data } = await axios.get(url);
-	    const $ = cheerio.load(data);
-        var html = $('#torrent-description').html();
-        const text = convert(html);
-        var txt = $('#collapse-comments').contents().map(function() {
-                if($(this).html()){
-                const user=$(this).find('a[title="User]').text()
-                const comment=$(this).find('div[class="comment-content"]').text();
-                return {user,comment};
-                }
-        }).get()
-        
-        console.log(txt)       
-}
-test();
