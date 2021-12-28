@@ -84,7 +84,6 @@ const url="https://nyaa.si/view/1471545"
         const text = convert(html);
         const list = $('#comments')
         var txt = $('#comments').contents().map(function() {
-            if (this.type === 'text')
                 return $(this).text().trim()
         }).get()
         
