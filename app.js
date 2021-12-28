@@ -58,16 +58,12 @@ app.post('/api/torrentData',async (req,res)=>{
     try{
         const {id}=req.body;
         
-        //const url="https://nyaa.si/view/"+id;
-        const url="https://nyaa.si/view/1471545"
+        const url="https://nyaa.si/view/"+id;
         const { data } = await axios.get(url);
 	    const $ = cheerio.load(data);
         var html = $('#torrent-description').html();
         const text = convert(html);
-        const list = $('div[id="comments"]')
-        .find('div[id^="com"]')
-        .toArray()
-        console.log(list);
+       
         res.json({status:'ok', description: text})
         console.log("response sent")
         }
@@ -79,3 +75,16 @@ app.post('/api/torrentData',async (req,res)=>{
 app.listen(process.env.PORT || PORT, () => {
 	console.log("listening "+PORT+"...");
 });
+async function test(){
+
+const url="https://nyaa.si/view/1471545"
+        const { data } = await axios.get(url);
+	    const $ = cheerio.load(data);
+        var html = $('#torrent-description').html();
+        const text = convert(html);
+        const list = $('div[id="comments"]')
+        .find('div[id^="com"]').html()
+        .toArray()
+        console.log(list);
+}
+test();
