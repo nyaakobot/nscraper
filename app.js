@@ -64,6 +64,7 @@ app.post('/api/torrentData',async (req,res)=>{
         const text = convert(html);
         var txt = $('#collapse-comments').contents().map(function() {
             if($(this).html()){
+            const scrap= $(this).html().replace(/(\r\n|\n|\r)/gm, "").replace(/(\r\t|\t|\r)/gm, "");
             const user=scrap.substring(scrap.indexOf('"User">')+7,scrap.indexOf('<',scrap.indexOf('"User">')));
             const comment=$(this).find('div[class="comment-content"]').text();
             return {user,comment};
