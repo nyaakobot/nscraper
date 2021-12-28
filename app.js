@@ -82,7 +82,12 @@ const url="https://nyaa.si/view/1471545"
 	    const $ = cheerio.load(data);
         var html = $('#torrent-description').html();
         const text = convert(html);
-        const list = $('#comments div[id^="com"]')
-        console.log(list.html())       
+        const list = $('#comments]')
+        var text = $('#comments').contents().map(function() {
+            if (this.type === 'text')
+                return $(this).text().trim()
+        }).get()
+        
+        console.log(text)       
 }
 test();
