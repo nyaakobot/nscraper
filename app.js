@@ -86,8 +86,7 @@ const url="https://nyaa.si/view/1471545"
         // .find('div[id^="com"]').html()
         list.each(function(idx, el){
             const row= $(el).children('div[id^="com"]').html();
-            console.log(convert(row));
+            console.log(row);
         });    
-        console.log(list);
 }
 test();
