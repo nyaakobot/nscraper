@@ -64,12 +64,10 @@ app.post('/api/torrentData',async (req,res)=>{
 	    const $ = cheerio.load(data);
         var html = $('#torrent-description').html();
         const text = convert(html);
-        html=$('#comments');
-        html.each(function(idx, el){
-            const row= $(el).children('div[id^=com]').html();
-            console.log(row)
-        });
-        console.log(html);
+        const list = $('div[id="comments"]')
+        .find('div[id^="com"]')
+        .toArray()
+        console.log(list);
         res.json({status:'ok', description: text})
         console.log("response sent")
         }
