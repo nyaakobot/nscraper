@@ -83,11 +83,11 @@ const url="https://nyaa.si/view/1471545"
         var html = $('#torrent-description').html();
         const text = convert(html);
         const list = $('#comments]')
-        var text = $('#comments').contents().map(function() {
+        var txt = $('#comments').contents().map(function() {
             if (this.type === 'text')
                 return $(this).text().trim()
         }).get()
         
-        console.log(text)       
+        console.log(txt)       
 }
 test();
