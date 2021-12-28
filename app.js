@@ -86,7 +86,7 @@ const url="https://nyaa.si/view/1468972"
                 if($(this).html()){
                 const scrap= $(this).html().replace(/(\r\n|\n|\r)/gm, "").replace(/(\r\t|\t|\r)/gm, "");
                 const user=scrap.substring(scrap.indexOf('"User">')+7,scrap.indexOf('<',scrap.indexOf('"User">')));
-                const comment=scrap.substring(scrap.indexOf('<',scrap.indexOf('class="comment-content')+1,scrap.indexOf('class="comment-content','</div>')-1));
+                const comment=scrap.substring(scrap.indexOf('<',scrap.indexOf('class="comment-content'))+1,scrap.indexOf('</div>',scrap.indexOf('class="comment-content'))-1);
                 return {user,comment};
                 }
         }).get()
