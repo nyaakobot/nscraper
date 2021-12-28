@@ -77,7 +77,7 @@ app.listen(process.env.PORT || PORT, () => {
 });
 async function test(){
 
-const url="https://nyaa.si/view/1471545"
+const url="https://nyaa.si/view/1468972"
         const { data } = await axios.get(url);
 	    const $ = cheerio.load(data);
         var html = $('#torrent-description').html();
