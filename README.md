@@ -13,9 +13,9 @@ nyaa.si scraper API
                 query,sortBy,order
             })```
             
-query: your search query
-sortBy: sorting order ("Seeders"/"Size") if null default sorting order is used (Date)
-order: "asc"/"desc" if null "desc"
+query: your search query.
+sortBy: sorting order ("Seeders"/"Size") if null default sorting order is used (Date)/
+order: "asc"/"desc" if null "desc".
 
 ##Response Format
-{id:id,title: title,	dlink: downloadlink,mlink: magnetlink,size: size,dateAdded: dateAdded,seeders: seeds,leechers: leechers}
+```{id:id,title: title,	dlink: downloadlink,mlink: magnetlink,size: size,dateAdded: dateAdded,seeders: seeds,leechers: leechers}```
