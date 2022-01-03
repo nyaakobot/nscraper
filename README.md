@@ -14,7 +14,7 @@ nyaa.si scraper API
             })```
             
 query: your search query,
-sortBy: ```"Seeders"```/```"Size"``) if null default sorting order is used (Date),
+sortBy: ```"Seeders"```/```"Size"```) if null default sorting order is used (Date),
 order: ```"asc"```/```"desc"``` if null "desc".
 
 #Response Format
