@@ -4,14 +4,14 @@ nyaa.si scraper API
 
 #Request Format
 
-           ```method: 'POST',
+           method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
             },
             body: JSON.stringify({
                 query,sortBy,order
-            })```
+            })
             
 query: your search query,
 sortBy: ```"Seeders"```/```"Size"```) if null default sorting order is used (Date),
