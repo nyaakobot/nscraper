@@ -1,4 +1,4 @@
-### nscraper
+#nscraper
 nyaa.si scraper API
 
 
@@ -18,4 +18,5 @@ sortBy: ```"Seeders"```/```"Size"```) if null default sorting order is used (Dat
 order: ```"asc"```/```"desc"``` if null "desc".
 
 #Response Format
+
 ```{id:id,title: title,dlink: downloadlink,mlink: magnetlink,size: size,dateAdded: dateAdded,seeders: seeds,leechers: leechers}```
