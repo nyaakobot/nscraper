@@ -2,18 +2,9 @@
 nyaa.si scraper API
 
 
-#Request Format
-
-           method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            body: JSON.stringify({
-                query,sortBy,order
-            })
-            
+#Request body must include -      
 query: your search query,
+Optional parameters -
 sortBy: ```"Seeders"```/```"Size"```) if null default sorting order is used (Date),
 order: ```"asc"```/```"desc"``` if null "desc".
 
