@@ -20,6 +20,7 @@ app.post('/api/results', async (req, res) => {
         else
             url = "https://nyaa.si/?f=0&c=0_0&q=" + nquery
         if (filter) url = url.replace('0_0', filter);
+        console.log(url)
         const { data } = await axios.get(url);
         const $ = cheerio.load(data);
         const tabl = $(".table-responsive table tbody tr");
