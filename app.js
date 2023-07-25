@@ -1,13 +1,16 @@
 const express = require('express');
 const app=express();
 const path = require('path');
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 const axios = require("axios");
 const cheerio = require("cheerio");
 const { convert } = require('html-to-text');
 const bodyParser = require('body-parser');
 app.use(express.json());
 app.use('/', express.static(path.join(__dirname)));
+app.get('/',async(req,res)=>{
+    res.send("hellllo")
+})
 app.use(bodyParser.json());
 app.post('/api/results', async (req, res) => {
     try{
